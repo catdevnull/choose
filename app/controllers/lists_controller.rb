@@ -1,4 +1,16 @@
 class ListsController < ApplicationController
+  def generateURL()
+    
+    url = ('a'..'z').to_a.shuffle[0..15].join
+    
+    until List.find_by_url(url).nil? do
+      url = ('a'..'z').to_a.shuffle[0..15].join
+    end
+    
+    return url
+  end
+  
+  
   # GET /lists
   # GET /lists.xml
   def index
@@ -10,10 +22,13 @@ class ListsController < ApplicationController
     end
   end
 
-  # GET /lists/1
-  # GET /lists/1.xml
+  # GET /lists/url
+  # GET /lists/url.xml
   def show
-    @list = List.find(params[:id])
+    @list = List.find_by_url(params[:id])
+
+    @list.lastviewed = Time.now()
+    @list.save
 
     respond_to do |format|
       format.html # show.html.erb
@@ -32,15 +47,21 @@ class ListsController < ApplicationController
     end
   end
 
-  # GET /lists/1/edit
+  # GET /lists/url/edit
   def edit
-    @list = List.find(params[:id])
+    @list = List.find_by_url(params[:id])
   end
 
   # POST /lists
   # POST /lists.xml
   def create
     @list = List.new(params[:list])
+    
+    @list.url = generateURL()
+    @list.lastedited = Time.now()
+    @list.lastviewed = Time.now()
+    
+    
 
     respond_to do |format|
       if @list.save
@@ -53,10 +74,12 @@ class ListsController < ApplicationController
     end
   end
 
-  # PUT /lists/1
-  # PUT /lists/1.xml
+  # PUT /lists/url
+  # PUT /lists/url.xml
   def update
-    @list = List.find(params[:id])
+    @list = List.find_by_url(params[:id])
+
+    @list.lastedited = Time.now()
 
     respond_to do |format|
       if @list.update_attributes(params[:list])
@@ -69,10 +92,10 @@ class ListsController < ApplicationController
     end
   end
 
-  # DELETE /lists/1
-  # DELETE /lists/1.xml
+  # DELETE /lists/url
+  # DELETE /lists/url.xml
   def destroy
-    @list = List.find(params[:id])
+    @list = List.find_by_url(params[:id])
     @list.destroy
 
     respond_to do |format|

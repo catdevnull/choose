@@ -10,22 +10,9 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </div>
   <div class="field">
     <%= f.label :list %><br />
-    <%= f.text_field :list %>
-  </div>
-  <div class="field">
-    <%= f.label :lastedited %><br />
-    <%= f.datetime_select :lastedited %>
-  </div>
-  <div class="field">
-    <%= f.label :lastviewed %><br />
-    <%= f.datetime_select :lastviewed %>
+    <%= f.text_area :list, :size => "60x40" %>
   </div>
   <div class="actions">
     <%= f.submit %>
