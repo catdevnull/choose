@@ -1,5 +1,7 @@
-At <%= Time.now.strftime("%T") %> we selected for you the random item:
+At <%= Time.now.strftime("%T") %> server time we selected for you the random item:
 
 <h1 class="random"><%=@name%></h1>
 
-Hit Refresh to select another random item or click <%= link_to 'Back', @list %>.
+<%= link_to image_tag("refresh_button.gif", :class=>"random"), {:action => 'random'} %>
+
+<p>Hit the big refresh button to select another random item or click <%= link_to 'Back', @list %>.</p>

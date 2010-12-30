@@ -56,9 +56,17 @@ div.field, div.actions {
 }
 
 h1.random {
+	font-size: 75px;
 	text-align: center;
-	margin-left: 10%;
-	margin-right: 10%;
-	padding: 25px;
-	border: 10px solid red;
+	margin-left: 7.5%;
+	margin-right: 7.5%;
+	padding: 50px;
+	border: 15px solid red;
+}
+
+img.random {
+	border: 0px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
