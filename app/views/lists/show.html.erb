@@ -3,10 +3,12 @@
 
 <p>
   <b>List:</b>
-  <%= @list.list %>
+  <%= simple_format(@list.list) %>
 </p>
 
 
-<%= link_to 'Random', {:action => 'random'} %> |
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<h2><%= link_to 'Pick a random item!', {:action => 'random'} %></h2>
+
+
+<%= link_to 'Edit List', edit_list_path(@list) %> |
+<%= link_to 'Delete List', @list, :confirm => 'Are you sure?', :method => :delete %></td>

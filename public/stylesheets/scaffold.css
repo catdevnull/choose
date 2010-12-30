@@ -54,3 +54,11 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+h1.random {
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 10%;
+	padding: 25px;
+	border: 10px solid red;
+}

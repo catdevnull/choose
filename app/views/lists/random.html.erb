@@ -1,3 +1,5 @@
-<h1><%=@name%></h1>
+At <%= Time.now.strftime("%T") %> we selected for you the random item:
 
-<%= link_to 'Back', @list %>
+<h1 class="random"><%=@name%></h1>
+
+Hit Refresh to select another random item or click <%= link_to 'Back', @list %>.
