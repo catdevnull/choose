@@ -1,5 +1,7 @@
 ChooseHerokuCom::Application.routes.draw do
   resources :lists
+  
+  match 'lists/random/:id' => 'lists#random'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

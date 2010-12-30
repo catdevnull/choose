@@ -46,6 +46,20 @@ class ListsController < ApplicationController
       format.xml  { render :xml => @list }
     end
   end
+  
+  # GET /lists/random/url
+  def random
+    @list = List.find_by_url(params[:id])
+    
+    names = @list.list.squeeze("\n").split("\n")
+    
+    @name = names[rand(names.length)]
+    
+    respond_to do |format|
+      format.html # random.html.erb
+      format.xml  { render :xml => @name }
+    end
+  end
 
   # GET /lists/url/edit
   def edit
