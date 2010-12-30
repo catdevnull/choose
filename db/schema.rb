@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(:version => 20101230101627) do
 
-  create_table "lists", :force => true do |t|
+  create_table "lists", :id => false, :force => true do |t|
     t.string   "url"
     t.string   "list"
     t.datetime "lastedited"
